@@ -1,0 +1,22 @@
+﻿@model Post
+@{
+    ViewBag.Title = "Post";
+}
+
+<div class="post-hero-image" style="background-image: url(@(BlogResourcesManager.URL_PREFIX + Model.CurrentVersion.PreviewPictureUrl))"></div>
+<div class="col-sm-8 col-sm-offset-2">
+
+    <h1>@Model.CurrentVersion.Title <small>: @Model.SceBlog.BlogName</small></h1>
+    <b>@Model.CurrentVersion.PreviewText</b>
+
+    <div class="post-body">@Html.Raw(Model.CurrentVersion.Body)</div>
+
+    <small>by @Model.CurrentVersion.Author.FirstName @Model.CurrentVersion.Author.LastName</small>
+
+
+
+    <p>Tags: @String.Join(", ", Model.CurrentVersion.Tags.Select(t => t.Name.Trim()))</p>
+
+    @Html.ActionLink("Back to Blog", "Blog", new { BlogName = Model.SceBlog.UrlName })
+
+</div>

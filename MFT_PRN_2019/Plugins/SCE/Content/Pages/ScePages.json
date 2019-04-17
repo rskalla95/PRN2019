@@ -1,0 +1,75 @@
+{
+	"FolderName": "NameHere",
+	"Pages": [
+		{
+			"Id": "5309d65f-2bf0-4044-a732-a0bd501c76a5",
+			"Title": "Home",
+			"UriName": "home",
+			"MetaInfo": {
+				"test": "Kenneth",
+				"SideNav": 1
+			},
+			"Path": null,
+			"RedirectLocation": null,
+			"IsDefaultPage": true,
+			"PageScripts": null,
+			"PageStyles": null,
+			"TemplateName": "Homepage.cshtml"
+		},
+		{
+			"Id": "96b956a4-c357-4661-8008-b3add00f8f96",
+			"Title": "About",
+			"UriName": "about",
+			"MetaInfo": null,
+			"Path": "about",
+			"RedirectLocation": null,
+			"PageScripts": null,
+			"PageStyles": null,
+			"TemplateName": "Double-Content.cshtml"
+		},
+		{
+			"Id": "d5a87c50-1ab3-4018-9fb9-daf9fb655901",
+			"Title": "Clinicians",
+			"UriName": "clinicians",
+			"MetaInfo": null,
+			"Path": "clinicians",
+			"RedirectLocation": null,
+			"PageScripts": null,
+			"PageStyles": null,
+			"TemplateName": "Double-Content.cshtml"
+		},
+		{
+			"Id": "248a546a-3bcb-47ef-b76e-98b4f69be24f",
+			"Title": "Events",
+			"UriName": "events",
+			"MetaInfo": null,
+			"Path": "events",
+			"RedirectLocation": null,
+			"PageScripts": null,
+			"PageStyles": null,
+			"TemplateName": "Double-Content.cshtml"
+		},
+		{
+			"Id": "180ae294-9e35-4dbc-8dd7-da29577a5b26",
+			"Title": "Assessments",
+			"UriName": "assessments",
+			"MetaInfo": null,
+			"Path": "assessments",
+			"RedirectLocation": null,
+			"PageScripts": null,
+			"PageStyles": null,
+			"TemplateName": "Double-Content.cshtml"
+		},
+		{
+			"Id": "49b1f30c-5b34-4e0f-b870-763a2da0899f",
+			"Title": "Researchers",
+			"UriName": "researchers",
+			"MetaInfo": null,
+			"Path": "researchers",
+			"RedirectLocation": null,
+			"PageScripts": null,
+			"PageStyles": null,
+			"TemplateName": "Double-Content.cshtml"
+		}
+	]
+}

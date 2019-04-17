@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.SiteName = "SCE Core Website";
+}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#002E5D">
+    <title>@ViewBag.Title</title>
+    @Html.RenderCdnStyles()
+    @Styles.Render("~/sce-content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel='shortcut icon' href='//fhsscdn.byu.edu/SCE/5.0.4/content/favicon.ico' type='image/x-icon' />
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    @* Provides the flex styling for the sticky footer and defines the region of the page where visible elements live. Nothing out of this container should be visible. *@
+    <div class="display-container">
+        @Html.Partial("_Header")
+        <div class="main-content wrapper">
+            @Html.Partial("_SideNav", (Byu.Fhss.Sce.PageManagement.ScePage)ViewBag.ScePage)
+            <div style="flex-grow:1">
+                <div class="container">
+                    <button type="button" class="side-nav-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
+                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    </button>
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_Footer")
+    </div>
+    @****************** Scripts ******************@
+    @Html.RenderCdnScripts()
+    @Scripts.Render("~/sce-content/js")
+    @Scripts.Render("~/sce-bundles/core")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

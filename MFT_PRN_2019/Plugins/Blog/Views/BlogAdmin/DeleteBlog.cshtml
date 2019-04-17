@@ -1,0 +1,26 @@
+﻿@model SceBlog
+@{
+	ViewBag.Title = "Delete Blog";
+}
+
+<div class="col-sm-4 col-sm-offset-4">
+
+	<h2>@ViewBag.Title</h2>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken();
+
+		<div style="display: none">
+			<input type="hidden" name="BlogID" value="@Model.ID" />
+		</div>
+		<p>Are you sure you want to permanently delete "@Model.BlogName" along with all of its content?</p>
+		<div class="form-group spread">
+			<input type="submit" value="Delete blog" class="btn btn-danger"/>
+		</div>
+	}
+	<p>A preview of the post would be great right here.</p>
+
+	@Html.ActionLink("Cancel", "Blog", "BlogAdmin", new { BlogName = Model.UrlName }, new { @class = "", style = "flex: 1" })
+
+</div>

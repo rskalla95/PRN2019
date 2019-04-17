@@ -1,0 +1,22 @@
+﻿@model Byu.Fhss.Sce.PageManagement.ScePage
+@{
+	  string id = "create-page-form";
+}
+<div class="modal fade" tabindex="-1" role="dialog" id="create-page-modal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Create a New Page</h4>
+			</div>
+			<div class="modal-body">
+				@Html.EditorForModel(new { @id = @id })
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal()">Close</button>
+				<button type="button" class="btn btn-primary">Create</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>

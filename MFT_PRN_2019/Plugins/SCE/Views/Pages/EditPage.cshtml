@@ -1,0 +1,16 @@
+﻿@model PageRequest
+
+<h3>Edit "@Model.Title"</h3>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @originalUri = Model.UriName } ))
+{
+	@Html.EditorForModel(new { @method = "post", @onsubmit = "return true;" })
+
+	<div class="form-group text-right">
+		<input type="submit" class="btn btn-success" value="Submit" />
+	</div>
+}
+
+<hr />
+
+@Html.ActionLink("Back to Pages", "Browse", new { @uri = ViewBag.Path.Substring(0, Math.Max(ViewBag.Path.LastIndexOf("/"),0)) }, new { @class = "btn btn-default" })

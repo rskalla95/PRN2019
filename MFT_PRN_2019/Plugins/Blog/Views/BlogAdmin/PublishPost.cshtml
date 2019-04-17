@@ -1,0 +1,25 @@
+﻿@model Post
+@{
+	ViewBag.Title = "Publish Post";
+}
+
+<div class="col-sm-4 col-sm-offset-4">
+
+	<h2>@ViewBag.Title</h2>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken();
+
+		<div style="display: none">
+			<input type="hidden" name="PostID" value="@Model.ID" />
+		</div>
+		<p>Are you sure you want to publish "@Model.CurrentVersion.Title"?</p>
+		<div class="form-group spread">
+			<input type="submit" value="Publish" class="btn btn-success" />
+		</div>
+	}
+	<p>A preview of the post would be great right here.</p>
+
+	@Html.ActionLink("Cancel", "Blog", "BlogAdmin", new { BlogName = Model.SceBlog.UrlName }, new { @class = "" })
+</div>

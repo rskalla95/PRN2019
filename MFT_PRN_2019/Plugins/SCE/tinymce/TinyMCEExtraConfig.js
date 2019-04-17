@@ -1,0 +1,1 @@
+﻿const styleFormats = [ /* Put your custom styles here and they will show up in the TinyMCE editor. https://www.tinymce.com/docs/configure/content-formatting/#style_formats */ ];

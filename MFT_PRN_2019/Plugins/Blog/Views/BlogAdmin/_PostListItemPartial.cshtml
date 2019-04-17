@@ -1,0 +1,33 @@
+﻿@model Post
+<tr>
+    <td>@Model.CurrentVersion.Title</td>
+    <td>@Model.CurrentVersion.PreviewText</td>
+    <td align="center" style="width: 20rem;">
+        <div class="btn-group btn-group-justified" role="group">
+            @if (Model.Published)
+            {
+                @Html.ActionLink("View", "BlogPost", "Blogs", new { BlogName = Model.SceBlog.UrlName, PostName = Model.PostUrlName }, new { @class = "btn btn-sm btn-primary" })
+            }
+            else
+            {
+                @Html.ActionLink("Preview", "PostPreview", "BlogAdmin", new { BlogName = Model.SceBlog.UrlName, PostName = Model.PostUrlName }, new { @class = "btn btn-sm btn-primary" })
+            }
+            @Html.ActionLink("Edit", "EditPost", new { BlogName = Model.SceBlog.UrlName, PostName = Model.PostUrlName }, new { @class = "btn btn-sm btn-info" })
+        </div>
+    </td>
+    <td align="center" style="width: 10rem">
+        <div class="btn-group btn-group-justified" role="group">
+            @if (Model.Published)
+            {
+                @Html.ActionLink("Un-Publish", "UnpublishPost", new { BlogName = Model.SceBlog.UrlName, PostName = Model.PostUrlName }, new { @class = "btn btn-sm btn-warning" })
+            }
+            else
+            {
+                @Html.ActionLink("Publish", "PublishPost", new { BlogName = Model.SceBlog.UrlName, PostName = Model.PostUrlName }, new { @class = "btn btn-sm btn-success" })
+            }
+        </div>
+    </td>
+    <td align="center" style="width: 7rem;">
+        @Html.ActionLink("Delete", "DeletePost", new { BlogName = Model.SceBlog.UrlName, PostName = Model.PostUrlName }, new { @class = "btn btn-sm btn-danger" })
+    </td>
+</tr>

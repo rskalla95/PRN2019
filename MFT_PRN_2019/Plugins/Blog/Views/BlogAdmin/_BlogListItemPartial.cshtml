@@ -1,0 +1,10 @@
+﻿@model SceBlog
+
+<h3>@Model.BlogName</h3>
+
+<div class="btn-group">
+	@Html.ActionLink("View", "BlogFeed", "Blogs", new { BlogName = Model.UrlName }, new { @class = "btn btn-primary" })
+	@Html.ActionLink("Post", "NewPost", new { BlogName = Model.UrlName }, new { @class = "btn btn-success" })
+	@Html.ActionLink("Edit", "Blog", new { BlogName = Model.UrlName }, new { @class = "btn btn-info" })
+	@Html.ActionLink("Delete", "DeleteBlog", new { BlogName = Model.UrlName }, new { @class = "btn btn-danger" })
+</div>

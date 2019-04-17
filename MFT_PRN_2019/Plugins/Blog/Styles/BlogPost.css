@@ -1,0 +1,8 @@
+﻿.post-hero-image {
+	width: 100%;
+	height: 40rem;
+	background-color: #eee;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

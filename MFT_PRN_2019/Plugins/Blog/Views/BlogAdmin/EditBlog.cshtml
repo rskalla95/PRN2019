@@ -1,0 +1,36 @@
+﻿@model EditBlogVM
+@{
+	ViewBag.Title = "Edit Blog";
+}
+<div class="col-sm-6 col-sm-offset-3">
+	<h2>@ViewBag.Title</h2>
+
+	@using (Html.BeginForm(null, null, FormMethod.Post, new { encType = "multipart/form-data" } ))
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.EditingBlogName, "Blog Name")
+			@Html.TextBoxFor(model => model.EditingBlogName, new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.EditingBlogName)
+		</div>
+
+        <div class="form-group">
+            <p>Current Picture: @Model.OldBlogPicture</p>
+            <div class="preview-current-picture" style="text-align: center">
+                <img style="height:200px;" src="@(BlogResourcesManager.URL_PREFIX + Model.OldBlogPicture)" />
+            </div>
+            <br />
+            <label>New Blog Picture (optional): <input type="file" name="NewBlogPicture" /></label>
+        </div>
+
+		<div class="form-group">
+			<input type="submit" value="Update Blog" class="btn btn-success" />
+		</div>
+	}
+
+	<div>
+		@Html.ActionLink("Back to Blog", "Blog", new { BlogName = ViewBag.BlogUrlName })
+	</div>
+
+</div>

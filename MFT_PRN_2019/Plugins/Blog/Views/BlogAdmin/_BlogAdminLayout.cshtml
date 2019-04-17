@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/bundles/Blog/css")
+@Styles.Render("~/bundles/BlogAdmin/css")
+
+<div class="container">
+    @RenderBody()
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/BlogAdmin/js")
+}

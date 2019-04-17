@@ -1,0 +1,118 @@
+﻿@using Byu.Fhss.Sce.PageManagement
+@using Byu.Fhss.Sce.Util.PageManagement
+@model Byu.Fhss.Sce.PageManagement.ManagePagesVM
+@{
+    string id = "create-page-form";
+    ViewBag.i = 0;
+    string upALevel = Model.FolderPath;
+    if (string.IsNullOrWhiteSpace(Model.FolderPath))
+    {
+        upALevel = "";
+    }
+    else
+    {
+        int lastSlash = Model.FolderPath.LastIndexOf('/');
+        if (lastSlash >= 0) {
+            upALevel = Model.FolderPath.Substring(0, lastSlash);
+        } else
+        {
+            upALevel = "";
+        }
+    }
+}
+<a class="up-a-level btn btn-default nav-anchor" href="@(ViewBag.AdminRoot)Browse/@upALevel"><span class="glyphicon glyphicon-level-up"></span></a> <span class="current-folder-indicator">@Model.FolderPath</span>
+
+<table class="table table-hover table-responsive" id="file-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th width="180"></th>
+            <th>Template</th>
+            <th>Path</th>
+            <th width="56"></th>
+            <th width="56"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model.NumberOfEntries > 0)
+        {
+            foreach (var entry in Model)
+            {
+                string filepathid = "file-path-" + ViewBag.i;
+                string filepathtrigger = "file-path-trigger-" + ViewBag.i;
+
+                if (entry is ScePage)
+                {
+                    var pageEntry = (ScePage)entry;
+
+                    string filepath = ViewBag.PagesRoot + pageEntry.UriPath;
+                    <text>
+                        <tr>
+                            <td><a href="@filepath">@*<span class="glyphicon glyphicon-file" style="margin-right: 1rem"></span>*@@pageEntry.Title</a></td>
+
+                            <td>
+                                @if (pageEntry.IsDefaultPage == true)
+                                {
+                                    <p class="btn btn-primary disabled" style="width: 100%">
+                                        Current Home Page
+                                    </p>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Set as Home Page", "SetDefault", new { @uri = pageEntry.UriPath }, new { @class = "btn btn-primary", style = "width: 100%" })
+                                }
+                            </td>
+
+                            <td>@pageEntry.TemplateName.Replace(".cshtml", "").Replace('-', ' ')</td>
+
+                            <td>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="@filepathid" value="@filepath" style="max-width: 100%" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" data-clipboard-target="#@filepathid" id="@filepathtrigger"><span class="glyphicon glyphicon-copy"></span></button>
+                                    </span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <a href="@Url.Action("EditPage", "Pages", new { @uri = pageEntry.UriPath })" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></a>
+                            </td>
+
+                            <td>
+                                @if (pageEntry.IsDefaultPage != true)
+                                {
+                                    <a class="btn btn-danger" href="@(ViewBag.AdminRoot)DeletePage/@pageEntry.UriPath"><span class="glyphicon glyphicon-trash"></span></a>
+                                }
+                            </td>
+                        </tr>
+                    </text>
+                }
+                else
+                {
+                    var folderEntry = (SceFolder)entry;
+                    <text>
+                        <tr>
+                            <td><a class="nav-anchor" href="@(ViewBag.AdminRoot)Browse/@folderEntry.Uri"><span style="margin-right:1rem" class="glyphicon glyphicon-folder-open"></span>@folderEntry.Name</a></td>
+                            <td></td>
+                            <td></td>
+                            <td>@folderEntry.Uri</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </text>
+                }
+                ViewBag.i++;
+            }
+        }
+        else
+        {
+            <text>
+                <tr class="warning">
+                    <td colspan="6" align="center" class="text-warning">There is nothing in this folder!</td>
+                </tr>
+            </text>
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+﻿@model SceBlog
+
+<div class="blog-admin-hero-image" style="background-image: url(@(Byu.Fhss.Sce.Blog.Utilities.BlogResourcesManager.URL_PREFIX + Model.BlogPictureName))"></div>
+
+<h2>@Model.BlogName <small>(Default)</small></h2>
+
+<div class="btn-group">
+	@Html.ActionLink("View", "DefaultBlogFeed", "Blogs", new { }, new { @class = "btn btn-primary" })
+	@Html.ActionLink("Post", "NewPost", new { BlogName = Model.UrlName }, new { @class = "btn btn-success" })
+	@Html.ActionLink("Edit", "Blog", new { BlogName = Model.UrlName }, new { @class = "btn btn-info" })
+	@Html.ActionLink("Delete", "DeleteBlog", new { BlogName = Model.UrlName }, new { @class = "btn btn-danger" })
+</div>

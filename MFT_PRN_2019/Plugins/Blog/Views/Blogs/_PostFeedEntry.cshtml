@@ -1,0 +1,24 @@
+﻿@model Post
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+
+        <div class="post-list-card">
+
+            <div class="card-body">
+                <div class="card-picture" style="background-image: url(@(BlogResourcesManager.URL_PREFIX + Model.CurrentVersion.PreviewPictureUrl))"></div>
+                <div class="card-text">
+                    <a href="@Url.Action("BlogPost", new { BlogName = Model.SceBlog.UrlName, PostName = Model.PostUrlName })"><h3>@Model.CurrentVersion.Title</h3></a>
+                    <small>@Model.CurrentVersion.Author.FirstName @Model.CurrentVersion.Author.LastName</small>
+                    <p>@Model.CurrentVersion.ProcessedPreviewText()</p>
+                </div>
+            </div>
+            <div class="card-foot">
+                <p>
+                    Tags: @String.Join(", ", Model.CurrentVersion.Tags.Select(t => t.Name).ToArray())
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>

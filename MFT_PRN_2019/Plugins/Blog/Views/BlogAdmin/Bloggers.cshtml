@@ -1,0 +1,27 @@
+﻿@model BloggersVM
+@{
+	ViewBag.Title = "Bloggers";
+}
+
+<div class="manage-bloggers-container">
+	<h2>Edit Permissions for "@Model.BlogName"</h2>
+	<div class="manage-blogger-groups">
+		<h3>SCE Group Settings:</h3>
+		<table class="table table-center-vertical">
+			<thead>
+				<tr>
+					<th class="col-md-3">Group:</th>
+					<th class="col-md-1">Permission:</th>
+					<th class="col-md-8"></th>
+				</tr>
+			</thead>
+			<tbody>
+				@Html.Partial("_GroupPermissionsPartial", Model.GroupPermissions)
+			</tbody>
+		</table>
+	</div>
+	<div class="manage-bloggers">
+		<h3>Add Bloggers:</h3>
+		<small>Coming soon!</small>
+	</div>
+</div>

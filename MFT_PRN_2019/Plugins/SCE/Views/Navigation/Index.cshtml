@@ -1,0 +1,100 @@
+﻿@model Byu.Fhss.Sce.Util.Navigation.NavigationModel
+@{
+    ViewBag.Title = "Navigation";
+    string defaultOption = Model.Entries == null ? "Select a navigation" : null;
+    var blankModel = new Byu.Fhss.Sce.Util.Navigation.NavigationModel()
+    {
+        Name = "New Navigation",
+        Entries = new List<Byu.Fhss.Sce.Util.Navigation.NavEntry>()
+{
+new Byu.Fhss.Sce.Util.Navigation.NavEntry()
+{
+Title = "BYU Home",
+DisplayOrder = 0,
+Link = "https://www.byu.edu",
+MenuType = "Link"
+}
+}
+    };
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container" style="margin-top: 5rem">
+    <div class="row form-horizontal">
+        <div class="form-group">
+            <label for="select-navigation" class="col-md-2 control-label">Select Navigation</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    @Html.DropDownList("navigation-options", (IEnumerable<SelectListItem>)ViewBag.NavigationOptions, defaultOption, new { @class = "form-control" })
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary new-navigation" type="button">
+                            <i class="glyphicon glyphicon-plus"></i> New
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="navigation-edit-area">
+        @Html.Partial("_NavigationModel", Model)
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+            <div class="btn-group-lg btn-group">
+                <button type="button" class="save-navigation-button btn btn-success">Save Navigation</button>
+                <button type="button" class="delete-navigation-button btn btn-danger">Delete Navigation</button>
+            </div>
+            <div class="alert alert-success nav-alert" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+<div class="hidden template-elements">
+    @Html.Partial("_NavigationModel", blankModel)
+</div>
+
+@section styles {
+    <style>
+        .editor-pills-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            width: 14.6666666667%;
+            margin-right: 2%;
+            padding: 15px;
+            min-height: 485px;
+        }
+
+        .add-pill-button {
+            width: 100%;
+            color: #ccc;
+            border: none;
+        }
+    </style>
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(".editor-pills-list").sortable({
+
+            // This enforces that the items can only be moved on the y axis
+            axis: "y",
+
+            // This adds a class to the placeholder
+            placeholder: "pill-place-holder",
+
+            // This forces the size to stay
+            forcePlaceholderSize: true,
+
+            // This only allows li items to be sortable
+            items: '> li'
+        });
+    </script>
+}

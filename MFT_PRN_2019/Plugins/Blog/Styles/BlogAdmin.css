@@ -1,0 +1,184 @@
+﻿/* Blogs.cshtml */
+
+.blog-admin-container {
+	display: flex;
+	margin-top: 8rem;
+	min-height: 50vh;
+}
+
+.default-blog {
+	flex: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.blog-admin-hero-image {
+	width: 95%;
+	margin-right: 5%;
+	height: 40rem;
+	background-color: #eee;
+	background-size: cover;
+	background-position: center;
+}
+
+.other-blogs {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-left: solid 1px #ccc;
+	padding-left: 4rem;
+}
+
+.blog-scroll {
+	overflow-y: scroll;
+}
+
+/* Blog.cshtml */
+
+.blog-options {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* Blogger.cshtml */
+
+#results-panel li {
+	display: flex;
+	justify-content: space-between;
+}
+
+	#results-panel li:hover {
+		background-color: #eee;
+		cursor: pointer;
+	}
+
+/* NewPost.cshtml */
+
+#tag-ctn-0 {
+	width: 100% !important;
+}
+
+.tag-ctn-bootstrap-focus, .tag-ctn-bootstrap-focus .tag-res-ctn {
+	border-bottom-left-radius: 4px !important;
+	border-bottom-right-radius: 4px !important;
+}
+
+.tag-trigger {
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.new-post-options {
+	display: flex;
+	flex-direction: column;
+}
+
+.new-post-cancel {
+	display: flex;
+	justify-content: space-between;
+}
+
+.preview-image-container {
+	overflow: hidden;
+	height: 400px;
+}
+
+.preview-image-cover {
+	width: 100%;
+	height: 400px;
+	margin-top: 2rem;
+	background-color: rgba(238,238,238,.5);
+	position: absolute;
+}
+
+#preview-image {
+	width: 100%;
+	height: 400px;
+	margin-top: 2rem;
+	background-color: #eee;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/* EditPost.cshtml */
+
+
+
+/* Spinner CSS */
+.spin-div {
+	margin: 5px auto;
+	height: 30px;
+	width: 30px;
+}
+
+.spin-1 {
+	position: absolute;
+	background-image: url(/Assets/spin1.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 30px;
+	width: 30px;
+}
+
+.spin-2 {
+	position: absolute;
+	background-image: url(/Assets/spin2.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 30px;
+	width: 30px;
+}
+
+.spin-cw {
+	animation: spin 1s linear infinite;
+}
+
+.spin-ccw {
+	animation: spin 2s linear infinite reverse;
+}
+
+@keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg); /* Chrome, Opera 15+, Safari 3.1+ */
+		-ms-transform: rotate(0deg); /* IE 9 */
+		transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+	}
+
+	100% {
+		-webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
+		-ms-transform: rotate(360deg); /* IE 9 */
+		transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+	}
+}
+
+/* Just for spreading buttons n things */
+.spread {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.blogger-view-list-item {
+	height: 200px;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 5px 1px rgba(0,0,0,0.2);
+	border-radius: 4px;
+	margin-right: 20px;
+	margin-left: 20px;
+	/*width: 300px;*/
+}
+
+.blogger-view-list-picture {
+	background-color: grey;
+	background-size: cover;
+	margin-right: 20px;
+}
+
+.blogger-view-list-item > div {
+	height: 100%;
+}

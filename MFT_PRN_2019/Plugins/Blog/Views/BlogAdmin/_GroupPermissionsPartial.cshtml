@@ -1,0 +1,16 @@
+﻿@using Byu.Fhss.Sce.Blog.Authorization
+@model List<Permission>
+
+<tr>
+	<td>Admins</td>
+	<td><select disabled class="disabled-select"><option>Admin</option></select></td>
+	<td>@PermissionLevels.Admin.Explanation()</td>
+</tr>
+@foreach (Permission Group in Model)
+{
+	<tr>
+		<td>@Group.Name</td>
+		<td data-permission-id="@Group.ID">@Html.EnumDropDownListFor(g => Group.Level)</td>
+		<td class="permission-description">@Group.Level.Explanation()</td>
+	</tr>
+}

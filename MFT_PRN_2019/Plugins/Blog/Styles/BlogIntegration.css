@@ -1,0 +1,48 @@
+﻿#main-content {
+    background-color: white;
+    min-height: calc(100vh + 150px);
+    margin-top: 100px;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    /*height: 50px;*/
+    z-index: 1000;
+    opacity: 1;
+}
+
+    header .col-sm-6:nth-child(2) {
+        display: none;
+    }
+
+    header .col-sm-6:nth-child(1) * {
+        float: left;
+        vertical-align: middle;
+    }
+
+    header .col-sm-6:nth-child(1) a {
+        margin-top: 10px;
+    }
+
+    header .col-sm-6:nth-child(1) h1 {
+        float: left;
+        margin-top: -10px;
+        font-size: 30px;
+        margin-left: 20px;
+    }
+
+    header .col-sm-6:nth-child(1) br {
+        display: none;
+    }
+
+body > nav.navbar-byu.navbar#nav {
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	right: 0px;
+	z-index: 1000;
+	background: #012257;
+}

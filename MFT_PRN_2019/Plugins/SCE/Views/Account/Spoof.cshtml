@@ -1,0 +1,20 @@
+﻿@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <label for="newNetId">NetID to spoof:</label>
+    <input type="text" name="newNetId" />
+
+    <input type="submit" name="operation" value="Change" />
+
+    if (ViewBag.IsSpoofing)
+    {
+        <input type="submit" name="operation" value="Reset" />
+    }
+
+    if (ViewBag.Success != null && ViewBag.Success)
+    {
+        <br />
+        <p>Success.</p>
+    }
+}

@@ -1,0 +1,32 @@
+﻿@model Post
+@{
+    string PublishLinkText;
+    string PublishLinkAction;
+    if (Model.Published)
+    {
+        PublishLinkText = "Un-Publish";
+        PublishLinkAction = "UnpublishPost";
+    }
+    else
+    {
+        PublishLinkText = "Publish";
+        PublishLinkAction = "PublishPost";
+    }
+}
+<li class="blogs-li">
+    <span class="blog-title">
+        @Html.ActionLink(Model.CurrentVersion.Title, "EditPost", new { BlogName = Model.Blog.UrlName, PostName = Model.PostUrlName })
+    </span>
+    ..........
+    <span class="blog-view">
+        @Html.ActionLink("View", "BlogPost", "Blogs", new { BlogName = Model.Blog.UrlName, PostName = Model.PostUrlName }, new { })
+    </span>
+    ..........
+    <span class="blog-publish">
+        @Html.ActionLink(PublishLinkText, PublishLinkAction, new { BlogName = Model.Blog.UrlName, PostName = Model.PostUrlName })
+    </span>
+    ..........
+    <span class="blog-delete">
+        @Html.ActionLink("Delete", "DeletePost", new { BlogName = Model.Blog.UrlName, PostName = Model.PostUrlName })
+    </span>
+</li>

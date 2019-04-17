@@ -1,0 +1,21 @@
+﻿@model List<Byu.Fhss.Sce.Authorization.Group>
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>User Group Manager</h2>
+<div class="panel-group" id="accordion">
+    @foreach (var Group in Model)
+    {
+        Html.RenderPartial("_GroupPanel", Group);
+    }
+</div>
+<hr />
+<form onsubmit="newGroup('#new-group-name', '#accordion'); return false;" class="col-md-6 col-md-offset-3">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Enter New Group Name" id="new-group-name" aria-describedby="input-label-addon">
+        <div class="input-group-btn">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus" style="margin-right: 1rem"></span>Add Group</button>
+        </div>
+    </div>
+</form>

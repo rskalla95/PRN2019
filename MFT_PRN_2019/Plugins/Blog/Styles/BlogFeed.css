@@ -1,0 +1,76 @@
+﻿#page > header > nav.navbar.byu2016-header-desktop {
+	background: white;
+}
+
+#nav {
+	background: white;
+	border-bottom: none !important;
+}
+
+.blog-hero-shade {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	background-color: rgba(0,0,0,.5);
+}
+
+.blog-hero {
+	z-index: 1;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	/*margin-top: -10rem;*/
+	height: 70rem;
+	background: #ccc;
+	background-position: center;
+	background-size: cover;
+}
+
+	.blog-hero h1 {
+		color: white;
+	}
+
+.blog-list {
+	margin-top: 75rem;
+}
+
+.post-list-card {
+	box-shadow: 0 1px 5px 1px rgba(0,0,0,0.2);
+	border-radius: 4px;
+	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+	.post-list-card > .card-body {
+		flex: 5;
+		display: flex;
+	}
+
+	.post-list-card > .card-foot {
+		flex: 1;
+		background: #aaa;
+		color: white;
+		font-weight: 500;
+		padding: 2rem;
+		display: flex;
+		justify-content: space-between;
+	}
+
+		.post-list-card > .card-foot > p {
+			margin: 0;
+		}
+
+.card-picture {
+	flex: 2;
+	background-color: #ccc !important;
+	background-position: center;
+	background-size: cover;
+}
+
+.card-text {
+	padding: 2rem;
+	flex: 3;
+}

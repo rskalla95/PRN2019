@@ -1,0 +1,18 @@
+﻿@model Author
+<li class="blogger-li" data-blogger-netid="@Model.NetID">
+    <span class="blogger-name">
+        @Model.FirstName @Model.LastName (@Model.NetID)
+    </span>
+    ..........
+    <span class="blogger-type">
+        @Html.DropDownListFor(m => Model.AuthorTypeID, (new MVCRender()).GetAuthorTypesSelectList(Model.AuthorType.ID))
+    </span>
+    ..........
+    <span class="blogger-remove">
+        <button type="button" class="remove-blogger-button btn btn-sm btn-danger">&times;</button>
+    </span>
+    @Html.HiddenFor(m => Model.ID)
+    @Html.HiddenFor(m => Model.FirstName)
+    @Html.HiddenFor(m => Model.LastName)
+    @Html.HiddenFor(m => Model.NetID)
+</li>

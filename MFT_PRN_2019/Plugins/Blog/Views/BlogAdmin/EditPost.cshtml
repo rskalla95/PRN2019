@@ -1,0 +1,90 @@
+﻿@model EditPostVM
+@{
+	ViewBag.Title = "Edit Post";
+}
+<div class="col-sm-10 col-sm-offset-1">
+
+	<h2>@ViewBag.Title</h2>
+
+	@using (Html.BeginForm(null, null, FormMethod.Post, new { encType = "multipart/form-data" }))
+	{
+		@Html.AntiForgeryToken();
+
+		<div style="display: none">
+			@Html.EditorFor(m => m.PostID);
+			@Html.EditorFor(m => m.PostVersionID)
+			@Html.EditorFor(m => m.VersionNumber)
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(m => m.Title)
+			@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Title)
+		</div>
+
+
+		<div class="form-group">
+			@Html.LabelFor(m => m.Body)
+			@Html.TextAreaFor(m => m.Body, new { @class = "form-control", @style = "height: 35vh", @id = "post-body-edit" })
+			@Html.ValidationMessageFor(m => m.Body)
+			<p>Posting as @Model.Blogger.FirstName @Model.Blogger.LastName</p>
+		</div>
+
+		@*<div class="form-group">
+			    @Model.BloggerName
+			</div>*@
+
+		<div class="form-group">
+			<label for="Tags">Tags:</label>
+			<input type="text" class="post-tags-input" name="Tags" data-blog-id="@Model.BlogID" value="@Model.Tags" />
+		</div>
+
+		<div class="form-group">
+			<span><label class="control-label" for="File">Preview Image</label> (optional):</span>
+			<br />
+			<label for="File" class="btn btn-default">Choose Image</label>
+			<span id="FileText">Must be JPEG or PNG</span>
+			<input type="file" id="File" name="PreviewPicture" style="display:none;" onchange="UpdateFileName(this)">
+			<canvas id="canvas" height="400" hidden></canvas>
+			<div id="preview-image" style="background-image: url(@(BlogResourcesManager.URL_PREFIX + Model.CurrentPreviewPicture)"></div>
+		</div>
+
+		<div class="form-group">
+			<span><label class="control-label">Preview Text</label> (optional):</span>
+			@Html.TextBoxFor(model => model.PreviewText, new { @class = "form-control", @placeholder = "200 character limit", @maxlength="200" })
+			@Html.ValidationMessageFor(model => model.PreviewText)
+		</div>
+
+        <div>
+            @Html.HiddenFor(model => model.Blogger.FirstName)
+            @Html.HiddenFor(model => model.Blogger.LastName)
+            @Html.HiddenFor(model => model.Blogger.ID)
+        </div>
+
+		<div class="form-group">
+			<div class="new-post-options btn-group-vertical">
+				@if (Model.IsPublished == false)
+				{
+					<text>
+						<button type="submit" name="Operation" class="btn btn-success" value="@EDIT_POST_OPS.SAVE">Save, but do not publish</button>
+					</text>
+				}
+				<button type="submit" name="Operation" class="btn btn-primary" value="@EDIT_POST_OPS.PUBLISH">Publish</button>
+			</div>
+			<br />
+			<div class="new-post-cancel">
+				@Html.ActionLink("Back to Blog Overview", "Blog", new { BlogName = Model.BlogName }, new { @class = "btn btn-secondary", style = "flex: 1;" })
+				@* You can't clone or delete if the PostVersion does not yet exist. *@
+				@if (Model.PostVersionID.HasValue)
+				{
+					<text>
+						<button type="submit" name="Operation" class="btn btn-info" value="@EDIT_POST_OPS.CLONE" style="flex: 1">Clone</button>
+						<button type="submit" name="Operation" class="btn btn-danger" value="@EDIT_POST_OPS.DELETE" style="flex: 1">Delete</button>
+					</text>
+				}
+			</div>
+		</div>
+
+	}
+
+</div>

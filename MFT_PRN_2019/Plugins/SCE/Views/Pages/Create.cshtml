@@ -1,0 +1,13 @@
+﻿@model PageRequest
+@{
+    string id = "create-page-form";
+}
+<h4>Create a new page:</h4>
+@using (Html.BeginForm(null, null, new { Path = ViewBag.Path }, FormMethod.Post, new { @class = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorForModel(new { @id = @id })
+
+    <button class="btn btn-success btn-block btn-lg" type="submit">Submit</button>
+}

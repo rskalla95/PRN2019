@@ -1,0 +1,15 @@
+﻿@model List<SceBlog>
+@{
+	ViewBag.Title = "Blogger View";
+}
+
+<div>
+	<h2>Your blogs:</h2>
+	<br />
+	<div class="blog-scroll" style="margin-left: 30px;">
+		@foreach (SceBlog Blog in Model)
+			{
+			@Html.Partial("_BloggerViewBlogListItemPartial", Blog)
+			}
+	</div>
+</div>

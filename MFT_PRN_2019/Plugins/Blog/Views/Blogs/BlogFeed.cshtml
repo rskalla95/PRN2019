@@ -1,0 +1,33 @@
+﻿@model BlogFeedVM
+@{
+	ViewBag.Title = "Blog Feed";
+}
+
+<link href="~/Plugins/Blog/Styles/BlogFeed.css" rel="stylesheet" />
+
+<div class="blog-hero" style="background-image: url(@Model.BlogImage)">
+	<div class="blog-hero-shade">
+		<center>
+			<h1>@Model.BlogName</h1>
+		</center>
+	</div>
+</div>
+
+<div class="blog-list">
+
+	@if (Model.BlogPosts.Count > 0)
+	{
+		foreach (Post CurrentPost in Model.BlogPosts)
+		{
+			@Html.Partial("_PostFeedEntry", CurrentPost)
+		}
+	}
+	else
+	{
+		<text>
+			<div class="alert alert-warning">No posts found.</div>
+		</text>
+	}
+	<hr />
+	@Html.ActionLink("Blog Admin", "Blog", "BlogAdmin", new { BlogName = Model.BlogUrlName }, new { })
+</div>

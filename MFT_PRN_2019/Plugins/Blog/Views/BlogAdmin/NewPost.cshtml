@@ -1,0 +1,67 @@
+﻿@model NewPostVM
+@{
+	ViewBag.Title = "NewPost";
+}
+
+<div class="col-sm-10 col-sm-offset-1">
+	<h2>New Post</h2>
+
+	@using (Html.BeginForm(null, null, FormMethod.Post, new { encType = "multipart/form-data" }))
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Title)
+			@Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.Title)
+		</div>
+
+		//TODO: MAKE ME SCE
+		<div class="form-group">
+			@Html.LabelFor(model => model.Body)
+			@Html.TextAreaFor(model => model.Body, new { @class = "form-control", @style = "height: 35vh", @id = "post-body-edit" })
+			@Html.ValidationMessageFor(model => model.Body)
+            <p>Posting as @Model.Blogger.FirstName @Model.Blogger.LastName</p>
+		</div>
+
+		<div class="form-group">
+			<label for="Tags">Tags:</label>
+			<input type="text" class="post-tags-input form-control " name="Tags" data-blog-id="@Model.BlogID" />
+		</div>
+
+		<div class="form-group">
+			<span><label class="control-label" for="File">Preview Image</label> (optional):</span>
+			<br />
+			<label for="File" class="btn btn-default">Choose Image</label>
+			<span id="FileText">Must be JPEG or PNG</span>
+			<input type="file" id="File" name="PreviewPicture" style="display:none;" onchange="UpdateFileName(this)">
+			<canvas id="canvas" height="400" hidden></canvas>
+			<div id="preview-image" style="display: none;"></div>
+		</div>
+
+        <div class="form-group">
+            <span><label class="control-label">Preview Text</label> (optional):</span>
+            @Html.TextBoxFor(model => model.PreviewText, new { @class = "form-control", @placeholder="200 character limit" })
+            @Html.ValidationMessageFor(model => model.PreviewText)
+        </div>
+
+        <div>
+            @Html.HiddenFor(model => model.Blogger.FirstName)
+            @Html.HiddenFor(model => model.Blogger.LastName)
+            @Html.HiddenFor(model => model.Blogger.ID)
+        </div>
+
+		<div class="form-group">
+			<div class="new-post-options btn-group-vertical">
+				<button type="submit" name="Operation" class="btn btn-success" value="@EDIT_POST_OPS.SAVE">Save, but do not publish</button>
+				<button type="submit" name="Operation" class="btn btn-primary" value="@EDIT_POST_OPS.PUBLISH">Publish Post</button>
+			</div>
+			<br />
+			<div class="new-post-cancel">
+				@Html.ActionLink("Back to Blog Overview", "Blog", new { BlogName = Model.BlogUrlName }, new { @class = "btn btn-secondary", style = "flex: 1;" })
+				<button type="submit" name="Operation" class="btn btn-danger" value="@EDIT_POST_OPS.DELETE" style="flex: 1">Discard Post</button>
+			</div>
+		</div>
+	}
+
+</div>

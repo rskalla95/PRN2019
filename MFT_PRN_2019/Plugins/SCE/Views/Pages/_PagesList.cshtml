@@ -1,0 +1,53 @@
+﻿@model List<Byu.Fhss.Sce.PageManagement.ScePage>
+@{
+	ViewBag.i = 0;
+}
+
+@foreach (var Page in Model)
+{
+	string filepath = ViewBag.PagesRoot + Page.UriName;
+	string filepathid = "file-path-" + ViewBag.i;
+	string filepathtrigger = "file-path-trigger-" + ViewBag.i;
+
+	<text>
+		<tr>
+			<td><a href="@filepath">@*<span class="glyphicon glyphicon-file" style="margin-right: 1rem"></span>*@@Page.Title</a></td>
+
+			<td>
+				@if (Page.IsDefaultPage == true)
+				{
+					<p class="btn btn-primary disabled" style="width: 100%">
+						Current Home Page
+					</p>
+				}
+				else
+				{
+					@Html.ActionLink("Set as Home Page", "SetDefault", new { @arg1 = Page.UriName }, new { @class = "btn btn-primary", style = "width: 100%" })
+				}
+			</td>
+
+			<td>@Page.TemplateName.Replace(".cshtml", "").Replace('-', ' ')</td>
+
+			<td>
+				<div class="input-group">
+					<input type="text" class="form-control" id="@filepathid" value="@filepath" style="max-width: 100%" />
+					<span class="input-group-btn">
+						<button class="btn btn-info" data-clipboard-target="#@filepathid" id="@filepathtrigger"><span class="glyphicon glyphicon-copy"></span></button>
+					</span>
+				</div>
+			</td>
+
+			<td>
+				<a href="@Url.Action("EditPage", "Pages", new { @arg1 = Page.UriName })" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></a>
+			</td>
+
+			<td>
+				@if (Page.IsDefaultPage != true)
+				{
+					<button class="btn btn-danger" onclick="deletePage('@Page.UriName')"><span class="glyphicon glyphicon-trash"></span></button>
+				}
+			</td>
+		</tr>
+	</text>
+	ViewBag.i++;
+}

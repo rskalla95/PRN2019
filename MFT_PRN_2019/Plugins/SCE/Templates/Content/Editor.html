@@ -1,0 +1,32 @@
+﻿<!-- replace id, page_title, html -->
+<button id="button{{REPLACE_ID}}" class="editButton btn btn-default" data-toggle="modal" data-target="#myModalcontent{{REPLACE_ID}}">
+    <span class="glyphicon glyphicon-pencil" style="padding-right: 1em;"></span>
+    Edit
+</button>
+<br /><br />
+<div id="myModalcontent{{REPLACE_ID}}" class="modal fade" role="dialog">
+    <div class="modal-dialog sce-editor-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<span style="float:inherit; margin-left: 60%;">
+                    Powered By: <img src="/Content/Images/SCE_LOGO.svg" width="60" />
+                </span>-->
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="float: left;">Text Editor</h4>
+            </div>
+            <form id="saveContentForm{{REPLACE_ID}}" onsubmit="saveContent(this, {{REPLACE_ID}}); return false;">
+                <div class="modal-body">
+                    <input type="text" name="Areaid" value="{{REPLACE_ID}}" style="display: none;" />
+                    <input type="text" name="PageName" value="{{REPLACE_PAGE_TITLE}}" style="display: none;" />
+                    <input type="text" name="UriPath" value="{{REPLACE_URI_PATH}}" style="display: none;" />
+                    <textarea style="height: 400px;" name="Html" id="mytextareacontent{{REPLACE_ID}}">{{REPLACE_HTML}}</textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="closeEditModal{{REPLACE_ID}}">Close</button>
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

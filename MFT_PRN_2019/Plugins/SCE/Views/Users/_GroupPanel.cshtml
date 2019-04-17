@@ -1,0 +1,120 @@
+﻿@model Byu.Fhss.Sce.Authorization.Group
+@{
+	string ContainerDiv = Model.Name.Replace(' ', '-') + "-group";
+}
+
+@{
+	string PanelType = "";
+	string open = "";
+	string expa = "false";
+	string style = "height: 0";
+
+	switch (Model.Name)
+	{
+		case "Admins":
+			PanelType = "primary";
+			open = "in";
+			expa = "true";
+			style = "";
+			break;
+		case "Editors":
+			PanelType = "info";
+			break;
+		default:
+			PanelType = "default";
+			break;
+	}
+
+	string togglehref = "#" + ContainerDiv;
+
+	<text>
+		<div class="panel panel-@PanelType">
+
+			<a data-toggle="collapse" data-parent="#accordion" href="@togglehref" style="text-decoration: none" class="text-@PanelType">
+				<div class="panel-heading bg-@PanelType">
+					<h3 class="panel-title">
+						@Model.Name
+					</h3>
+				</div>
+			</a>
+
+			@*<div class="panel-heading">
+					<h3 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="@togglehref">
+							@Model.Name
+						</a>
+					</h3>
+				</div>*@
+
+			<div id="@ContainerDiv" class="panel-collapse collapse @open" aria-expanded="@expa" style="@style">
+
+				<div class="panel-body">
+					<div class="spread">
+						<h4>Current @Model.Name</h4>
+						@if (Model.CustomGroup)
+						{
+							<text>
+								<button class="btn btn-danger" onclick="deleteGroup('@Model.Name', '@("#" + ContainerDiv)')" style="position: relative; top: -5px;">
+									<span class="glyphicon glyphicon-trash" style="margin-right: 1rem"></span>
+									Delete This Group
+								</button>
+							</text>
+						}
+					</div>
+					<div class="user-list-table">
+						<table class="table table-hover table-center-vertical">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>NetID</th>
+									<th>Status</th>
+									<th width="30"></th>
+								</tr>
+							</thead>
+							<tbody class="user-list-tbody">
+								@Html.Partial("_UsersList", Model.MemberInfos, new ViewDataDictionary { { "ModelName", Model.Name }, { "ContainerDiv", ContainerDiv } })
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="panel-footer">
+
+					<form class="form-inline" onsubmit="searchName('@ContainerDiv', '@Model.Name'); return false;">
+						<div class="form-group">
+							<label for="user-netid">Add user by NetID:</label>
+							<input type="text" class="form-control user-netid" placeholder="Search NetID..." style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+
+							<button type="submit" class="btn btn-primary btn-toolbar" style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</div>
+					</form>
+
+					<div class="results-panel" style="display: none">
+
+						<div class="spin-div" style="display: none">
+							<div class="spin-1 spin-cw" style="display: none"></div>
+							<div class="spin-2 spin-ccw" style="display: none"></div>
+						</div>
+
+						<div class="netid-search-results-table" style="display: none">
+							<table class="table table-hover table-center-vertical">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>NetID</th>
+										<th>Status</th>
+										<th width="30"></th>
+									</tr>
+								</thead>
+								<tbody class="netid-search-results-tbody"></tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</text>
+}

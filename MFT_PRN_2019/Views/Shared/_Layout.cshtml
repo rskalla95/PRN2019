@@ -1,42 +1,35 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@{
+    ViewBag.SiteName = "SCE Core Website";
+}
+<!DOCTYPE html>
+<html lang="en-us">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    <meta name="theme-color" content="#002E5D">
+    <title>@ViewBag.Title</title>
+    @Html.RenderCdnStyles()
+    @Styles.Render("~/sce-content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel='shortcut icon' href='//fhsscdn.byu.edu/SCE/5.0.4/content/favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
+    @RenderSection("styles", required: false)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+    @* Provides the flex styling for the sticky footer and defines the region of the page where visible elements live. Nothing out of this container should be visible. *@
+    <div class="display-container">
+        @Html.Partial("_Header")
+        <div class="container main-content fullSceBox">
+            @* All the real estate between header and footer should be inside of this div. *@
+            @RenderBody()
         </div>
+        @Html.Partial("_Footer")
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @****************** Scripts ******************@
+    @Html.RenderCdnScripts()
+    @Scripts.Render("~/sce-content/js")
+    @Scripts.Render("~/sce-bundles/core")
     @RenderSection("scripts", required: false)
 </body>
 </html>

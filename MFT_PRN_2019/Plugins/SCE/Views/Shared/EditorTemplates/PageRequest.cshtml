@@ -1,0 +1,38 @@
+﻿@model PageRequest
+@{
+    ViewBag.Path = string.IsNullOrWhiteSpace(ViewBag.Path) ? "/" : ViewBag.Path;
+}
+<div class="form-group">
+    <p>Parent Folder: @ViewBag.Path</p>
+</div>
+<div class="form-group page-title-group">
+    @Html.LabelFor(m => m.Title)
+    @Html.EditorFor(m => m.Title, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+</div>
+<div class="form-group page-uri-name-group">
+    @Html.LabelFor(m => m.UriName)
+    @Html.EditorFor(m => m.UriName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(m => m.UriName, null, new { @class = "text-danger" })
+    <div class="alert alert-danger invalid-uri-warning" style="display: none">The given URL Name is invalid.</div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Template)
+    @Html.DropDownListFor(m => m.Template, new SelectList(((List<string>)ViewBag.TemplateNames).ToDictionary(key => key, value => value.Replace(".cshtml", "").Replace('-', ' ')), "Key", "Value"), new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Template, null, new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    <h3 class="toggle-advanced-options dropup" onclick="$('.advanced-page-options').slideToggle(); $(this).toggleClass('dropup')">Advanced Options <span class="caret"></span></h3>
+</div>
+<div class="advanced-page-options" style="display: none">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Scripts)
+        @Html.TextAreaFor(m => m.Scripts, new { @class = "form-control code-element", @data_ace_lang = "html" })
+        @Html.ValidationMessageFor(m => m.Scripts, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Styles)
+        @Html.TextAreaFor(m => m.Styles, new { @class = "form-control code-element", @data_ace_lang = "html" })
+        @Html.ValidationMessageFor(m => m.Styles, null, new { @class = "text-danger" })
+    </div>
+</div>

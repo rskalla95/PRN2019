@@ -1,0 +1,18 @@
+﻿@model Byu.Fhss.Sce.PageManagement.ScePage
+
+<div class="col-sm-6 col-sm-offset-3">
+	<h3>Delete Page</h3>
+	<p>Are you sure you want to delete the page "@Model.Title" at location "@ViewBag.FolderPath"?</p>
+
+	<center>
+		@using (@Html.BeginForm())
+		{
+			@Html.AntiForgeryToken();
+			<input type="submit" value="Yes, delete this page" class="btn btn-warning" />
+		}
+	</center>
+
+	<hr />
+
+	@Html.ActionLink("Back to Pages", "Browse", null, new { @class = "btn btn-default" })
+</div>

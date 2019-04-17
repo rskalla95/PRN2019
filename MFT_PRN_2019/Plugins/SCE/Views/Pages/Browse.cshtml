@@ -1,0 +1,21 @@
+﻿@model Byu.Fhss.Sce.PageManagement.ManagePagesVM
+@{
+    ViewBag.Title = "Pages";
+}
+<h2>@ViewBag.Title</h2>
+<div class="page-manager">
+    <div class="main-controls">
+        <div class="btn-group">
+            <a class="btn btn-success create-page-btn" href="@(ViewBag.AdminRoot)Create/@Model.FolderPath"><span class="glyphicon glyphicon-plus" style="margin-right:1rem;"></span>Add Page</a>
+            <a class="btn btn-primary create-folder-btn" href="@(ViewBag.AdminRoot)CreateFolder/@Model.FolderPath"><span class="glyphicon glyphicon-folder-close" style="margin-right: 1rem"></span>Add Folder</a>
+        </div>
+    </div>
+    <hr />
+    <div class="page-browser">
+        @Html.Partial("_FolderContents", Model)
+    </div>
+</div>
+
+@*@section scripts {
+    <script type="text/javascript" src="~/Plugins/SCE/Scripts/Pages.js"></script>
+}*@

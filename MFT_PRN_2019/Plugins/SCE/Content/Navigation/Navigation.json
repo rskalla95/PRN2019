@@ -1,0 +1,63 @@
+{
+	"DefaultNavigation": 0,
+	"store": {
+		"0": {
+			"Name": "Main Navigation",
+			"Entries": [
+				{
+					"DisplayOrder": 0,
+					"Link": "/",
+					"MenuType": "Link",
+					"Title": "About"
+				},
+				{
+					"DisplayOrder": 0,
+					"Link": "http://scedocumentation.byu.edu",
+					"MenuType": "Link",
+					"Title": "Researchers"
+				},
+				{
+					"DisplayOrder": 0,
+					"Link": "https://www.byu.edu",
+					"MenuType": "Link",
+					"Title": "Clinicians"
+				},
+				{
+					"DisplayOrder": 0,
+					"Link": "https://www.byu.edu",
+					"MenuType": "Link",
+					"Title": "Events"
+				},
+				{
+					"DisplayOrder": 0,
+					"Link": "https://www.byu.edu",
+					"MenuType": "Link",
+					"Title": "Assessments"
+				},
+				{
+					"DisplayOrder": 0,
+					"Link": "https://www.byu.edu",
+					"MenuType": "Link",
+					"Title": "Blog"
+				}
+			]
+		},
+		"1": {
+			"Name": "New Navigation",
+			"Entries": [
+				{
+					"DisplayOrder": 0,
+					"Link": "https://www.byu.edu",
+					"MenuType": "Link",
+					"Title": "BYU Home"
+				},
+				{
+					"DisplayOrder": 0,
+					"Link": "https://www.google.com",
+					"MenuType": "Link to New Window",
+					"Title": "This is a test"
+				}
+			]
+		}
+	}
+}

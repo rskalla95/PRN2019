@@ -1,0 +1,13 @@
+{
+  "Blogs": [
+    {
+      "ID": 1,
+      "Name": "initial-blog"
+    },
+    {
+      "ID": 30,
+      "Name": "prn-blog"
+    }
+  ],
+  "DefaultBlog": 30
+}

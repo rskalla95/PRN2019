@@ -1,0 +1,31 @@
+﻿@model NewBlogVM
+@{
+	ViewBag.Title = "New Blog";
+}
+<div class="col-sm-8 col-sm-offset-2">
+	<h2>@ViewBag.Title</h2>
+
+	@using (Html.BeginForm(null, null, FormMethod.Post, new { encType = "multipart/form-data" } ))
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.BlogName, "Blog Name")
+			@Html.TextBoxFor(model => model.BlogName, new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.BlogName)
+		</div>
+
+        <div class="form-group">
+            <label>Blog Picture<input type="file" name="BlogPicture" /></label>
+        </div>
+
+		<div class="form-group">
+			<input type="submit" value="Create Blog" class="btn btn-success" />
+		</div>
+	}
+
+	<div>
+		@Html.ActionLink("Back to Blogs", "Blogs")
+	</div>
+
+</div>

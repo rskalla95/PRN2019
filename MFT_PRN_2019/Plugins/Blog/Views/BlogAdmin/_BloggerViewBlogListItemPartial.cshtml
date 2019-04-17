@@ -1,0 +1,15 @@
+﻿@model SceBlog
+
+<div class="blogger-view-list-item">
+	<div class="col-md-5 blogger-view-list-picture" style="background-image: url(@(BlogResourcesManager.URL_PREFIX + Model.BlogPictureName))">
+
+	</div>
+	<div class="col-md-5">
+		<h3>@Model.BlogName</h3>
+		<div class="btn-group">
+			@Html.ActionLink("View", "BlogFeed", "Blogs", new { BlogName = Model.UrlName }, new { @class = "btn btn-primary" })
+			@Html.ActionLink("Post", "NewPost", new { BlogName = Model.UrlName }, new { @class = "btn btn-success" })
+			@Html.ActionLink("Edit", "Blog", new { BlogName = Model.UrlName }, new { @class = "btn btn-info" })
+		</div>
+	</div>
+</div>

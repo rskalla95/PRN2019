@@ -1,0 +1,14 @@
+[
+	{
+		"Name": "Admins",
+		"Members": [
+			"rcskalla"
+		],
+		"CustomGroup": false
+	},
+	{
+		"Name": "Editors",
+		"Members": [],
+		"CustomGroup": false
+	}
+]

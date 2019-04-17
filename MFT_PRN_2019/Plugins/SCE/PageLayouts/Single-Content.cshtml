@@ -1,0 +1,13 @@
+﻿@model Byu.Fhss.Sce.PageManagement.ScePage
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.DisplaySceContent(Model, 0, "")
+
+@section scripts {
+    @Html.Raw(Model.GetPageScripts())
+}
+@section styles {
+    @Html.Raw(Model.GetPageStyles())
+}

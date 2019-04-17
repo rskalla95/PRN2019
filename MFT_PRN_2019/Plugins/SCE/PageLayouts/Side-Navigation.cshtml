@@ -1,0 +1,14 @@
+﻿@model Byu.Fhss.Sce.PageManagement.ScePage
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.SideNavId = Model.GetMeta(Byu.Fhss.Sce.Controllers.Admin._PageAdminControllerBase.SideNavMetaKey);
+    Layout = "~/Views/Shared/_SideLayout.cshtml";
+}
+@Html.DisplaySceContent(Model, 0, "")
+
+@section scripts {
+    @Html.Raw(Model.GetPageScripts())
+}
+@section styles {
+    @Html.Raw(Model.GetPageStyles())
+}

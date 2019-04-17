@@ -1,0 +1,47 @@
+﻿@model List<SceBlog>
+@{
+	ViewBag.Title = "Blog Manager";
+
+    SceBlog DefaultBlog = null;
+    int DefaultBlogID = -1;
+    try
+    {
+        DefaultBlog = (SceBlog)ViewBag.DefaultBlog;
+        if (DefaultBlog != null)
+        {
+            DefaultBlogID = DefaultBlog.ID;
+        }
+    }
+    catch (InvalidCastException)
+    {
+        // Do nothing.
+    }
+}
+
+<div class="blog-admin-container">
+	<div class="default-blog">
+		@if (DefaultBlog != null)
+		{
+			@Html.Partial("_BlogDefaultListItemPartial", DefaultBlog)
+		}
+		else
+		{
+			<text>
+				<h2>Uh oh, it looks like the default blog hasn't been set!</h2>
+			</text>
+		}
+	</div>
+	<div class="other-blogs">
+		<div>
+			<h4>Other Blogs:</h4>
+			
+			<div class="blog-scroll">
+				@foreach (SceBlog Blog in Model.Where(c => c.ID != DefaultBlogID))
+			{
+					@Html.Partial("_BlogListItemPartial", Blog)
+			}
+			</div>
+		</div>
+		@Html.ActionLink("Create New Blog", "NewBlog", new { }, new { @class = "btn btn-success" })
+	</div>
+</div>

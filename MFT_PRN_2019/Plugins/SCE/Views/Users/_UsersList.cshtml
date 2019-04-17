@@ -1,0 +1,42 @@
+﻿@model List<Byu.Fhss.Ldap.LdapResult>
+
+@{
+
+	if (Model.Count > 0)
+	{
+		foreach (var Person in Model.OrderBy(p => p.LastName))
+		{
+			string disabled = "";
+			if ((string)ViewData["ModelName"] == "Admins" && SceUser.Current.NetID == Person.NetID)
+			{
+				disabled = "disabled";
+			}
+			<text>
+				<tr>
+					<td>
+						@Person.LastName, @Person.PreferredFirstName
+					</td>
+					<td>
+						@Person.NetID
+					</td>
+					<td>
+						@Person.EmployeeClassification
+					</td>
+					<td>
+						<button class="btn btn-warning" onclick="removeFromGroup('@Person.NetID', '@ViewData["ModelName"]', '@("#" + ViewData["ContainerDiv"])'); return false;" @disabled>
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+				</tr>
+			</text>
+		}
+	}
+	else
+	{
+		<text>
+			<tr class="warning">
+				<td colspan="4" align="center" class="text-warning">This group is empty</td>
+			</tr>
+		</text>
+	}
+}
