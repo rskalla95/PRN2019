@@ -488,6 +488,7 @@
     <Content Include="Views\ErrorPages\GatewayTimeout.cshtml" />
     <Content Include="Views\ErrorPages\BadRequest.cshtml" />
     <Content Include="Views\ErrorPages\BadGateway.cshtml" />
+    <Content Include="Views\Shared\_homeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
